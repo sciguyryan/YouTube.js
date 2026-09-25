@@ -24,6 +24,13 @@ describe('YouTube.js Tests', () => {
     //   const info = await innertube.getBasicInfo('ksEYRaIpP7A');
     //   expect(info.basic_info.id).toBe('ksEYRaIpP7A');
     // });
+    
+    test('Innertube#getBasicInfo preserves player microformat dates', async () => {
+      const info = await innertube.getBasicInfo('jNQXAC9IVRw');
+      
+      expect(info.basic_info.publish_date).toBe('2005-04-23T20:31:52-07:00');
+      expect(info.basic_info.upload_date).toBe('2005-04-23T20:31:52-07:00');
+    });
 
     test('Innertube#getShortsWatchItem', async () => {
       const info = await innertube.getShortsVideoInfo('jOydBrmmjfk');
